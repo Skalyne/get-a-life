@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h1>Hey Putos</h1>
+
+
+
+  {% if user.is_authenticated %}
+    {{user.username}}
+    <a class="nav-link" href="{% url 'create_character' %}">Add Character</a>
+    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+
+    
+    {{ life_charaters }}
+
+  {% else %}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'register' %}">Register</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'login' %}">Login</a>
+  </li>
+  {% endif %}
+  {% endblock %}
+
+  <script>
+    var name = '{{user.id}}';
+    document.getElementById("elder").value = name;
+</script>
